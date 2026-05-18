@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CODSOFT Internship</title>
+    <style>
+        :root {
+            --bg-color: #fafafa;
+            --card-color: #ffffff;
+            --main-text: #111111;
+            --sub-text: #555555;
+            --link-blue: #0066cc;
+            --border-line: #e5e5e5;
+        }
+
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            color: var(--main-text); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; /* Centers the content horizontally */
+        }
+        
+        /* Top Navigation Bar */
+        nav { 
+            width: 100%; 
+            height: 65px; 
+            background: rgba(255, 255, 255, 0.9); 
+            backdrop-filter: blur(10px); 
+            border-bottom: 1px solid var(--border-line); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 8%; 
+            position: fixed; 
+            top: 0; 
+            z-index: 100; 
+        }
+
+        .logo { 
+            font-weight: 700; 
+            font-size: 1.1rem; 
+        }
+
+        .logo span { 
+            color: var(--link-blue); 
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 2rem; 
+        }
+
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--main-text); 
+            font-size: 0.9rem; 
+            font-weight: 500; 
+            transition: color 0.2s; 
+        }
+
+        .nav-links a:hover, .nav-links a.active { 
+            color: var(--link-blue); 
+        }
+
+        /* Main Welcome Section */
+        .hero { 
+            max-width: 700px; 
+            margin-top: 150px; /* Space from the top navbar */
+            margin-bottom: 40px;
+            text-align: center; 
+            padding: 0 20px; 
+        }
+
+        .hero h1 { 
+            font-size: 2.5rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            letter-spacing: -0.5px;
+        }
+
+        .hero p { 
+            color: var(--sub-text); 
+            font-size: 1.1rem; 
+            line-height: 1.5;
+        }
+
+        /* Task Cards Container - Center Aligned */
+        .grid-container {
+            width: 100%;
+            max-width: 1000px;
+            padding: 0 40px 60px 40px;
+            display: flex;
+            justify-content: center; /* Centers cards if there are fewer than 3 */
+        }
+
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 2rem; 
+            width: 100%;
+        }
+
+        /* Clean Card Design */
+        .card { 
+            background: var(--card-color); 
+            border: 1px solid var(--border-line); 
+            border-radius: 12px; 
+            padding: 2rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 24px rgba(0,0,0,0.06); 
+            border-color: #cccccc; 
+        }
+
+        .card h3 { 
+            font-size: 1.25rem; 
+            margin-bottom: 10px; 
+        }
+
+        .card p { 
+            color: var(--sub-text); 
+            font-size: 0.9rem; 
+            line-height: 1.5; 
+            margin-bottom: 20px; 
+        }
+
+        .card-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            background: var(--main-text); 
+            color: #ffffff; 
+            text-align: center; 
+            padding: 0.7rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            font-weight: 500; 
+            transition: background 0.2s; 
+        }
+
+        .card-btn:hover { 
+            background: var(--link-blue); 
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">CODSOFT<span>Internship</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Overview</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="landing.html">Landing Page</a>
+            <a href="calculator.html">Calculator</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Web Development Tasks</h1>
+        <p>Welcome to my project dashboard. Here is a clean layout showing the single front-end pages I built for Level 1.</p>
+    </div>
+
+    <div class="grid-container">
+        <main class="grid">
+            <div class="card">
+                <div>
+                    <h3>01. Personal Portfolio</h3>
+                    <p>A simple page about me, the skills I am developing in college, and a couple of my technical projects.</p>
+                </div>
+                <a href="portfolio.html" class="card-btn">Open Page &rarr;</a>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>02. Landing Page</h3>
+                    <p>A clean, business-style page showing a product feature grid. Made using simple CSS alignments.</p>
+                </div>
+                <a href="landing.html" class="card-btn">Open Page &rarr;</a>
+            </div>
+            <div class="card">
+                <div>
+                    <h3>03. Calculator</h3>
+                    <p>A basic point-and-click app to calculate simple math logic. Features clean keyboard button links too.</p>
+                </div>
+                <a href="calculator.html" class="card-btn">Open Page &rarr;</a>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
