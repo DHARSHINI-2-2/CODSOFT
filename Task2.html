@@ -6,13 +6,13 @@
     <title>Landing Page</title>
     <style>
         :root {
-            --bg-color: #fafafa;
+            --bg-page: #fafafa;
             --white: #ffffff;
-            --text-main: #1c1c1e;
+            --text-dark: #1c1c1e;
             --text-muted: #636366;
             --btn-blue: #0071e3;
             --btn-hover: #0077ed;
-            --card-border: #e5e5ea;
+            --border-subtle: #e5e5ea;
         }
 
         * { 
@@ -23,8 +23,8 @@
         }
 
         body { 
-            background: var(--bg-color); 
-            color: var(--text-main); 
+            background: var(--bg-page); 
+            color: var(--text-dark); 
             padding-top: 65px; 
         }
 
@@ -34,7 +34,7 @@
             height: 65px; 
             background: rgba(255, 255, 255, 0.9); 
             backdrop-filter: blur(10px); 
-            border-bottom: 1px solid var(--card-border); 
+            border-bottom: 1px solid var(--border-subtle); 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
@@ -56,7 +56,7 @@
 
         .nav-links a { 
             text-decoration: none; 
-            color: var(--text-main); 
+            color: var(--text-dark); 
             font-size: 0.9rem; 
             font-weight: 500; 
         }
@@ -65,7 +65,6 @@
             color: var(--btn-blue); 
         }
 
-        /* Main Hero Layout */
         .hero { 
             padding: 5rem 20px 3rem 20px; 
             text-align: center; 
@@ -88,107 +87,146 @@
             line-height: 1.5; 
         }
 
-        .cta-btn { 
-            display: inline-block; 
-            text-decoration: none; 
-            background: var(--btn-blue); 
-            color: var(--white); 
-            padding: 0.8rem 2rem; 
-            border-radius: 8px; 
-            font-weight: 600; 
-            font-size: 0.95rem;
-            transition: background 0.2s; 
-        }
 
-        .cta-btn:hover { 
-            background: var(--btn-hover); 
-        }
-
-        /* Image Display Section */
-        .preview-section {
-            max-width: 850px;
-            margin: 0 auto 4rem auto;
+        /* THE HOVERING HERO ARCHITECTURE */
+        .hero-container {
+            max-width: 1100px;
+            margin: 4rem auto;
             padding: 0 20px;
+            position: relative; /* Acts as the anchor boundary for the text overlay */
         }
 
-        .image-box {
+        /* The Large Backdrop Image Box */
+        .image- pedestal {
             width: 100%;
-            height: 350px;
-            background: #e5e5ea;
+            height: 520px;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.02);
+            border: 1px solid var(--border-subtle);
         }
 
-        .image-box img {
+        .image-pedestal img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Features Layout */
-        .features { 
+        /* The Floating Glassmorphic Text Box */
+        .floating-text-box {
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            width: 440px;
+            background: rgba(255, 255, 255, 0.85); /* Semi-transparent white card */
+            backdrop-filter: blur(16px); /* Creates the soft glass blur effect from the screenshot */
+            -webkit-backdrop-filter: blur(16px);
+            padding: 3rem 2.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Small Decorative Dot Matrix Pattern from the screenshot */
+        .dots-pattern {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: #cccccc;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .floating-text-box h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .floating-text-box p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .cta-btn { 
+            display: inline-block; 
+            text-decoration: none; 
+            background: var(--text-dark); 
+            color: var(--white); 
+            padding: 0.8rem 1.8rem; 
+            border-radius: 6px; 
+            font-weight: 500; 
+            font-size: 0.9rem;
+            transition: background 0.2s; 
+        }
+
+        .cta-btn:hover { 
+            background: var(--btn-blue); 
+        }
+
+        /* Features Section Layout */
+        .features-section { 
             background: var(--white); 
-            border-top: 1px solid var(--card-border); 
+            border-top: 1px solid var(--border-subtle); 
             padding: 5rem 20px; 
         }
 
-        .features-intro {
-            text-align: center;
-            max-width: 600px;
+        .section-header {
+            max-width: 900px;
             margin: 0 auto 3rem auto;
         }
 
-        .features-intro h2 {
+        .section-header h2 {
             font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
-        .features-intro p {
+        .section-header p {
             color: var(--text-muted);
             font-size: 0.95rem;
         }
 
-        .grid { 
+        .rows-container { 
             max-width: 900px; 
             margin: 0 auto; 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
-            gap: 2rem; 
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
         }
 
-        .card { 
-            background: var(--bg-color); 
-            padding: 2rem; 
-            border-radius: 12px; 
-            border: 1px solid var(--card-border); 
+        .row-card { 
+            background: var(--bg-page); 
+            padding: 1.5rem 2rem; 
+            border-radius: 8px; 
+            border: 1px solid var(--border-subtle); 
+            border-left: 4px solid var(--btn-blue);
         }
 
-        .card h3 { 
-            font-size: 1.15rem; 
-            margin-bottom: 10px; 
+        .row-card h3 { 
+            font-size: 1.1rem; 
+            margin-bottom: 6px; 
             font-weight: 700; 
         }
 
-        .card p { 
+        .row-card p { 
             color: var(--text-muted); 
             font-size: 0.9rem; 
             line-height: 1.5; 
         }
 
-        /* Footer */
         footer { 
             text-align: center; 
             padding: 3rem; 
             font-size: 0.85rem; 
             color: #8e8e93; 
-            border-top: 1px solid var(--card-border); 
+            border-top: 1px solid var(--border-subtle); 
             background: var(--white);
         }
 
-        /* Responsiveness adjustments only */
+        /* Responsive Fix for Smaller Mobile Devices */
         @media (max-width: 850px) {
             nav {
                 height: auto;
@@ -228,7 +266,7 @@
 <body>
 
     <nav>
-        <div class="logo">Aether File System</div>
+        <div class="logo">AetherFS</div>
         <div class="nav-links">
             <a href="index.html">Overview</a>
             <a href="Task1.html">Portfolio</a>
@@ -240,30 +278,43 @@
     <header class="hero">
         <h1>A simpler way to store your files securely.</h1>
         <p>AetherFS is a conceptual cloud network where regular computers link up to store data together. No single company owns your data, making it safer, private, and completely distributed.</p>
-        <a href="#" class="cta-btn">Download Desktop Client</a>
     </header>
 
-    <section class="preview-section">
-        <div class="image-box">
-            <img src="https://images.stockcake.com/public/a/c/f/acf83e69-3e39-41b9-a833-e204720c0f31/global-network-connectivity-stockcake.jpg" alt="Network Nodes Preview">
-        </div>
-    </section><hr>
 
-    <section class="features">
-        <div class="features-intro">
+    <header class="hero-container">
+        
+        <div class="image-pedestal">
+            <img src="https://images.stockcake.com/public/a/c/f/acf83e69-3e39-41b9-a833-e204720c0f31/global-network-connectivity-stockcake.jpg" alt="Cloud Network Topology Background">
+        </div>
+
+        <div class="floating-text-box">
+            <div class="dots-pattern">••••<br>••••</div>
+            
+            <h1>We Help You Store Files Locally</h1>
+            <p>AetherFS links regular computer units to store sharded data safely together. No single entity tracks your folders, keeping them completely private.</p>
+            <a href="#" class="cta-btn">Get Started</a>
+        </div>
+
+    </header>
+
+    <section class="features-section">
+        <div class="section-header">
             <h2>How it works</h2>
             <p>Instead of sending your files to a massive company server, our experimental system handles files locally.</p>
         </div>
-        <div class="grid">
-            <div class="card">
+        
+        <div class="rows-container">
+            <div class="row-card">
                 <h3>Smart File Splitting</h3>
                 <p>Your files are cut into small pieces and safely mixed across multiple computers on the network so nobody can read your files but you.</p>
             </div>
-            <div class="card">
+            
+            <div class="row-card">
                 <h3>Quick Indexing</h3>
                 <p>The page tracks paths across active computers quickly, loading your personal data folders back together in just a few seconds.</p>
             </div>
-            <div class="card">
+            
+            <div class="row-card">
                 <h3>Automatic Backups</h3>
                 <p>If one computer on the network turns off, the remaining active systems instantly share and recreate any missing pieces automatically.</p>
             </div>
@@ -271,7 +322,7 @@
     </section>
 
     <footer>
-        &copy; 2026 AetherFS Project Hub. Designed with simple layout grids.
+        &copy; 2026 AetherFS Project Hub. Built using layout overlay positions.
     </footer>
 
 </body>
